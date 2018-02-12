@@ -1,5 +1,6 @@
 'use strict';
-
+/*jshint strict:false */
+/*jshint globalstrict: true*/
 var map;
 
 /*----Map ViewModel----*/
