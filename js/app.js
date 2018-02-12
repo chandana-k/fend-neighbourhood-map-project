@@ -1,6 +1,10 @@
 'use strict';
 /*jshint strict:false */
 /*jshint globalstrict: true*/
+/*global google */
+/*global ko */
+/*global locationsData */
+
 var map;
 
 /*----Map ViewModel----*/
