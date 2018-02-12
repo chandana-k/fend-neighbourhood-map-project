@@ -1,0 +1,179 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    height: 100%;
+    position: relative;
+}
+
+#topHeading {
+    visibility : hidden;
+}
+
+.searchBox{    
+    background: #999;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 125px;
+    padding: 5px;
+    box-shadow: 2px 2px 10px #868686;
+}
+
+#map {
+    height: 100%;
+}
+#parksList {
+    font-size: 12px;
+    width: 125px;
+    height: 200px;
+    padding: 5px;
+    position: absolute;
+    top: 50px;
+    left: 5px;
+    overflow: scroll;
+    background-color: white;
+    box-shadow: 2px 2px 10px #868686;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.2s linear;
+}
+
+.toggleListings {
+    margin-top: 0;
+    float: left;
+    color: white;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+}
+
+.toggleListings::before {
+    content: '';
+    display: block;
+    background-image: url("https://maps.gstatic.com/tactile/omnibox/quantum_menu-v2-1x.png");
+    background-size: 48px 24px;
+    background-position: 0 0; 
+    height: 24px;
+    width: 16px;
+    opacity: .62;
+    cursor: pointer;
+}
+
+
+
+.toggleListings:hover {
+    box-shadow: 2px 2px 10px #eaeaea;;
+    background-color: transparent;
+}
+form {
+    overflow: hidden;
+    float: right;
+    width: 80%;
+    margin-top: 0;
+    display: block;
+}
+#searchText {
+    border: 0;
+    background-color: #999;
+    padding-left: 10px;
+    width: 80%;
+    height: 20px;
+    font-size: 12px;
+    outline: none;
+    
+}
+#searchText:focus {
+    background-color: #f3f1ed;
+}
+
+ul {
+    list-style: none;
+    padding-left: 5px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: orange;
+}
+.parkItem {
+    line-height: 14px;
+    padding-bottom: 8px;
+}
+
+.display {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: opacity 0.4s linear !important;
+}
+#foursquare_photos {
+    width: 280px;
+}
+.fsphoto {
+    float: left;
+    margin: 5px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #000;
+}
+
+@media screen and (min-width: 900px) {
+    #topHeading {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        font-size: 24px;
+        padding: 5px;
+        border-radius: 2px;
+        visibility: visible;
+        }
+    .toggleListings { 
+        margin-top: 3px;
+        padding: 5px 10px;
+        border: 0;
+    }
+    .toggleListings::before {
+        width: 24px;
+    }
+    .searchBox {
+        top: 25px;
+        left: 25px;
+        width: 250px;
+    }
+    #searchText {
+        font-size: 14px;
+        width: 90%;
+        height: 30px;
+    }
+    form {
+        margin-top: 3px;
+    }
+    #parksList {
+        font-size: 16px;
+        width: 250px;
+        height: auto;
+        position: absolute;
+        top: 75px;
+        left: 25px;
+    }
+    ul {
+        padding-left: 14px;
+    }
+    .parkItem {
+        line-height: 20px;
+    }
+    
+}
