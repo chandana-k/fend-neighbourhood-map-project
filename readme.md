@@ -3,7 +3,7 @@ This is the Udacity Front End Nanodegree Neighbourhood Map Project which showcas
 
 The project uses Knockout JS for a simple MVVM Architecture.
 
-[Project Demo](https://chandana-k)
+[Project Demo](https://chandana-k.github.io/fend-neighbourhood-map-project/)
 
 Libraries and APIs used:
 - jQuery
