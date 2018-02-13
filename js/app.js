@@ -24,7 +24,7 @@ function MapViewModel (){
         self.fourSquareVenueId = obj.fsVenueId;
         self.fourSquareContent = null;
         /*FourSquare URL Maker*/
-        var fourSquareURL = "https://api.foursquare.com/v2/venues/"+self.fourSquareVenueId+"?&client_id=20BQWB4ZI0IPJG3LX14FL1B2CAITGUJKGWKFOIGWR3FK0WC2&client_secret=QSRRML12AE2EZ5CMGCMF3N5DRBQMJJ1KUUWDUWF2AU0JVL31&v=20161219"
+        var fourSquareURL = "https://api.foursquare.com/v2/venues/"+self.fourSquareVenueId+"?&client_id=20BQWB4ZI0IPJG3LX14FL1B2CAITGUJKGWKFOIGWR3FK0WC2&client_secret=QSRRML12AE2EZ5CMGCMF3N5DRBQMJJ1KUUWDUWF2AU0JVL31&v=20161219";
         /*--Create map marker--*/
         var defaultIcon = makeMarkerIcon('e74c3c');
         var highlightedIcon = makeMarkerIcon('f1c40f');
@@ -106,7 +106,7 @@ function MapViewModel (){
                           for (var i =0; i < 4; i++){
                                 content += '<div class="fsphoto"><a target="_blank" href="'+fourSquareURL+'"><img src="' + photos[i].prefix + '40x40' +photos[i].suffix + '"></a></div>';
                           }
-                          content += '</div>'
+                          content += '</div>';
                           infoWindow.setContent(content);
                       },
                       /*Error handler*/
