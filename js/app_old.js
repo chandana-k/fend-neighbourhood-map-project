@@ -21,11 +21,6 @@ function MapViewModel (){
         self.title = obj.title;
         self.latitude = obj.location.lat;
         self.longitude = obj.location.lng;
-        self.fourSquareVenueId = obj.fsVenueId;
-        self.fourSquareContent = null;
-        /*FourSquare URL Maker*/
-        var fourSquareURL = "https://api.foursquare.com/v2/venues/"+self.fourSquareVenueId+"?&client_id=20BQWB4ZI0IPJG3LX14FL1B2CAITGUJKGWKFOIGWR3FK0WC2&client_secret=QSRRML12AE2EZ5CMGCMF3N5DRBQMJJ1KUUWDUWF2AU0JVL31&v=20161219"
-        /*--Create map marker--*/
         var defaultIcon = makeMarkerIcon('e74c3c');
         var highlightedIcon = makeMarkerIcon('f1c40f');
 
@@ -78,56 +73,8 @@ function MapViewModel (){
               markerAnim = marker;
 
               var contentString = '<h2 class="park-title">' + self.title + '</h2>';
-
               infoWindow.setContent(contentString);
-              
-                            
-              /*-------Load FourSquare content-------*/
-              
-              /*First check to see if there exists any FourSquare content for this Park marker*/
-              if (!self.fourSquareContent) {
-                  var initialContent = infoWindow.getContent();
-                  var loadingMsg =  initialContent + '<div id="foursquarePhotos"><h3>Loading photos...</h3></div>';
-                  infoWindow.setContent(loadingMsg);
-                  $.ajax({
-                      url: fourSquareURL,
-                      dataType: 'json',
-                      success: function (data) {
-                          /*Remove loading message for FourSquare content*/
-                          infoWindow.setContent(initialContent);
-                          /*Build content for FourSquare content*/
-                          var content = initialContent + '<div id="foursquarePhotos">';
-                          content += '<p>FourSquare Photos</p>';
-                          /*FourSquare photos for respective Park*/
-                          var photos = data.response.venue.photos.groups[0].items;
-                          /*Get FourSquare page URL for respective Park*/
-                          var fourSquareURL = data.response.venue.canonicalUrl;
-                          /*Loop through trailPhotos array and get first 4 photos, and link each photo to respective FS URL*/
-                          for (var i =0; i < 4; i++){
-                                content += '<div class="fsphoto"><a target="_blank" href="'+fourSquareURL+'"><img src="' + photos[i].prefix + '40x40' +photos[i].suffix + '"></a></div>';
-                          }
-                          content += '</div>'
-                          infoWindow.setContent(content);
-                      },
-                      /*Error handler*/
-                      error: function () {
-                          var errorMessage = '<h3>Error loading FourSquare data : Failed!</h3>';
-                          infoWindow.setContent(errorMessage);
-                      }
-                      
-                  });
-                  
-              }
-
-              /* Make sure the marker property is cleared if the infowindow is closed.*/
-              infoWindow.addListener('closeclick', function() {
-                  infoWindow.marker = null;
-                  marker.setAnimation(null);
-              });
-
-               /*--Display info window for a correct trail marker--*/
               infoWindow.open(map, marker);
-
 
           }
         };
